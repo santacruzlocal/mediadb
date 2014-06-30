@@ -1,0 +1,19 @@
+
+<?php $__env->startSection('bodytag'); ?>
+	<body id="privacy">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="container push-footer-wrapper">
+
+    	<?php echo trans('privacy.privacy'); ?>
+
+	<div class="push"></div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('Main.Boilerplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

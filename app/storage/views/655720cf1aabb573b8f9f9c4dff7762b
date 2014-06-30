@@ -1,0 +1,74 @@
+
+<?php $__env->startSection('bodytag'); ?>
+	<body class="padding nav" data-url="<?php echo url(); ?>">
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('content'); ?>
+
+  <div class="browse container push-footer-wrapper">
+
+  <div class="row pagination-top"><?php echo $data->appends(array())->links(); ?>
+
+  	<?php if(Helpers::hasAccess('titles.create')): ?>	
+  		<a style="margin-bottom:10px" href="<?php echo url(Str::slug(trans('main.movies')) . '/create'); ?>" class="pull-right hidden-xs btn btn-success"><?php echo trans('main.create new'); ?></a>
+  	<?php endif; ?>
+  	
+  </div>
+
+	<?php echo $__env->make('Partials.FilterBar', array('action' => Str::slug(head(Request::segments()))), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			
+	<div class="row"> <?php echo $__env->make('Partials.Response', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> </div>
+    
+    <div id="grid" class="browse-grid">	
+		
+		<?php if ( ! $data->isEmpty()): ?>
+
+			
+			<?php foreach($data as $k => $r): ?>
+
+			    <figure class="col-sm-3 col-lg-2 col-xs-6" data-filter-class='<?php echo Helpers::genreFilter($r->genre); ?>' data-popularity="<?php echo $r['mc_num_of_votes'] ? $r['mc_num_of_votes'] : ($r['imdb_votes_num'] ? $r['imdb_votes_num'] : $r['tmdb_popularity']); ?>" data-name="<?php echo e($r->title); ?>" data-release="<?php echo e($r->year); ?>">
+			    	<div class="img-container">
+			    		<a href="<?php echo Helpers::url($r['title'], $r['id'], $r['type']); ?>">
+			    			<img class ="img-responsive" src="<?php echo str_replace('w185', 'w342', $r->poster); ?>" alt="<?php echo e($r['title']); ?>">
+						</a>
+
+				  	  <figcaption title="<?php echo e($r->title); ?>" >
+				  	  	<a href="<?php echo Helpers::url($r['title'], $r['id'], $r['type']); ?>"> <?php echo Helpers::shrtString($r['title']); ?> </a>
+						
+
+
+				  	  	<section class="row action-buttons">
+
+				  	  		<?php echo $__env->make('Partials.AddToListButtons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			    			
+			    			<?php if ($r['mc_critic_score']): ?>
+								<span class="pull-right"><?php echo substr($r['mc_critic_score'], 0, -1) . '/10'; ?></span>
+							<?php elseif ($r['imdb_rating']): ?>
+			    				<span class="pull-right"><?php echo ! str_contains($r['imdb_rating'], '.') ? $r['imdb_rating'] . '.0' : $r['imdb_rating'] . '/10'; ?> </span>
+			    			<?php elseif ($r['tmdb_rating']): ?>
+			    				<span class="pull-right"><?php echo ! str_contains($r['tmdb_rating'], '.') ? $r['tmdb_rating'] . '.0' : $r['tmdb_rating'] . '/10'; ?></span>
+			    			<?php endif; ?>
+			    			
+				  	  	</section>
+
+				  	  </figcaption>
+
+			    	</div>	      
+			    </figure>
+
+		    <?php endforeach; ?>
+
+		<?php else: ?>
+			<div><h3 class="reviews-not-released"> <?php echo trans('main.no results'); ?></h3></div>
+		<?php endif; ?>
+     
+	</div> 
+	<?php echo $data->appends(array())->links(); ?>
+<div class="push"></div>				
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('Main.Boilerplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

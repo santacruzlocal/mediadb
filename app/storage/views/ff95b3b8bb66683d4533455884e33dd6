@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="<?php echo Config::get('application.language') ?>">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title><?php echo Config::get('administrator::administrator.title'); ?></title>
+
+	<?php foreach ($css as $url): ?>
+		<link href="<?php echo $url; ?>" media="all" type="text/css" rel="stylesheet">
+	<?php endforeach; ?>
+
+	<!--[if lte IE 9]>
+		<link href="<?php echo asset('packages/frozennode/administrator/css/browsers/lte-ie9.css'); ?>" media="all" type="text/css" rel="stylesheet">
+	<![endif]-->
+
+</head>
+<body>
+	<div id="wrapper">
+		<?php echo $__env->make('administrator::partials.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		<?php echo $content; ?>
+
+		<?php echo $__env->make('administrator::partials.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	</div>
+
+	<?php foreach ($js as $url): ?>
+		<script src="<?php echo $url; ?>"></script>
+	<?php endforeach; ?>
+</body>
+</html>

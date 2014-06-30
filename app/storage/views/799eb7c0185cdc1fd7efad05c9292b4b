@@ -1,0 +1,26 @@
+<section id="grid" class="order cast-grid">
+
+    <?php foreach($data->getCast() as $k => $actor): ?>
+
+      <figure class="col-sm-2" data-order="<?php echo e($k); ?>">
+
+        <div class="img-container">
+          
+          <a href="<?php echo Helpers::url($actor['name'], $actor['id'], 'people'); ?>">
+            <img src="<?php echo e(asset($actor['image'])); ?>" class="img-responsive" alt="<?php echo 'Picture of ' . $actor['name']; ?>">
+          </a>         
+          
+          <figcaption>
+            <a href="<?php echo Helpers::url($actor['name'], $actor['id'], 'people'); ?>"><?php echo e($actor['name']); ?></a> <br>
+
+              <?php echo e($actor['pivot']['char_name']); ?>
+
+          </figcaption>
+
+        </div>
+
+      </figure> 
+
+    <?php endforeach; ?>
+
+</section>

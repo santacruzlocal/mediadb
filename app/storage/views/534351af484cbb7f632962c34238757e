@@ -1,0 +1,61 @@
+<?php if ( $user = Helpers::loggedInUser()): ?>
+
+	<?php if( ! isset($watchlist[$r->id])): ?>
+
+		<?php echo Form::open(array('action' => 'ListsController@postAdd', 'class' => 'lists-form')); ?>
+
+			<?php echo Form::hidden('user', $user->id); ?>
+			<?php echo Form::hidden('title', $r->id); ?>
+			<?php echo Form::hidden('list', 'watchlist'); ?>
+		  
+		  <button data-user="<?php echo e($user->id); ?>" data-title="<?php echo e($r->id); ?>" type="submit" title="<?php echo trans('main.add to watchlist'); ?>" class="btn btn-danger-drk btn-xs lists"><i class="fa fa-plus"></i> </button>
+
+		<?php echo Form::close(); ?>
+
+	<?php else: ?>
+
+		<?php echo Form::open(array('action' => 'ListsController@postRemove', 'class' => 'lists-form')); ?>
+
+		  <?php echo Form::hidden('user', $user->id); ?>
+		  <?php echo Form::hidden('title', $r->id); ?>
+		  <?php echo Form::hidden('list', 'watchlist'); ?>
+
+		  <button type="submit" title="<?php echo trans('main.remove from watchlist'); ?>" data-user="<?php echo e($user->id); ?>" data-title="<?php echo e($r->id); ?>" class="btn btn-danger-drk btn-xs lists watchlisted"><i class="fa fa-plus"></i></button>
+
+		<?php echo Form::close(); ?>
+
+	<?php endif; ?>
+
+	<?php if ( ! isset($favorites[$r->id])): ?>
+
+		<?php echo Form::open(array('action' => 'ListsController@postAdd', 'class' => 'lists-form')); ?>
+
+			<?php echo Form::hidden('user', $user->id); ?>
+			<?php echo Form::hidden('title', $r->id); ?>
+			<?php echo Form::hidden('list', 'favorite'); ?>
+		  
+		  <button  type="submit" data-user="<?php echo e($user->id); ?>" data-title="<?php echo e($r->id); ?>" title="<?php echo trans('main.add to favorites'); ?>" class="btn btn-danger-drk btn-xs lists"><i class="fa fa-heart"></i> </button>
+
+		<?php echo Form::close(); ?>
+
+	<?php else: ?>
+
+		<?php echo Form::open(array('action' => 'ListsController@postRemove', 'class' => 'lists-form')); ?>
+
+		  <?php echo Form::hidden('user', $user->id); ?>
+		  <?php echo Form::hidden('title', $r->id); ?>
+		  <?php echo Form::hidden('list', 'favorite'); ?>
+
+		  <button type="submit" title="<?php echo trans('main.remove from favorites'); ?>" data-user="<?php echo e($user->id); ?>" data-title="<?php echo e($r->id); ?>" class="btn btn-danger-drk btn-xs lists watchlisted"><i class="fa fa-heart"></i></button>
+
+		<?php echo Form::close(); ?>
+
+
+	<?php endif; ?>
+
+<?php else: ?>
+
+	<a href="<?php echo url('login'); ?>" title="<?php echo trans('main.add to watchlist'); ?>" class="btn btn-danger-drk btn-xs lists"><i class="fa fa-plus"></i> </a>
+	<a href="<?php echo url('login'); ?>" title="<?php echo trans('main.add to favorites'); ?>" class="btn btn-danger-drk btn-xs lists"><i class="fa fa-heart"></i> </a>
+
+<?php endif; ?>

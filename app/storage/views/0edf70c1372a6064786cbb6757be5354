@@ -1,0 +1,58 @@
+
+<?php $__env->startSection('bodytag'); ?>
+	<body id="contact">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="container push-footer-wrapper">
+
+    	<div class="col-sm-3"></div>
+
+		<div class="col-sm-6 contact-container">
+			
+			<?php echo $__env->make('Partials.Response', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			<h2><?php echo trans('main.contact'); ?></h2>
+
+			<div class="help-block">To contact us use the form below.</div>
+
+			<?php echo Form::open(array('route' => 'submit.contact', 'class' => 'form-horizontal')); ?>
+
+				<?php echo Form::label('name', trans('main.name')); ?> <span class="req">*</span>
+				<?php echo Form::text('name', Input::old('name'), array('class' => 'form-control')); ?>
+				<?php echo $errors->first('name', '<span class="help-block alert alert-danger">:message</span>'); ?>
+
+				<?php echo Form::label('email', trans('main.email')); ?> <span class="req">*</span>
+				<?php echo Form::text('email', Input::old('email'), array('class' => 'form-control')); ?>
+				<?php echo $errors->first('email', '<span class="help-block alert alert-danger">:message</span>'); ?>
+
+				<?php echo Form::label('comment', trans('main.contact messages')); ?> <span class="req">*</span>
+				<?php echo Form::textarea('comment', Input::old('comment'), array('class' => 'form-control', 'rows' => 5)); ?>
+				<?php echo $errors->first('comment', '<span class="help-block alert alert-danger">:message</span>'); ?>
+
+				<?php echo Form::label('human', trans('main.are you human')); ?> <span class="req">*</span>
+
+				<br>
+				<?php echo HTML::image(Captcha::img(), trans('main.captchaImage'), array('class' => 'captcha-image')); ?>
+				<?php echo Form::text('captcha', null, array('class' => 'form-control')); ?>
+				<?php echo $errors->first('captcha', '<span class="help-block alert alert-danger">:message</span>'); ?>
+				
+				
+
+				<?php echo Form::submit('Submit', array('class' => 'btn btn-success')); ?>
+
+    		<?php echo Form::close(); ?>
+
+		</div>
+
+    	<div class="col-sm-3"></div>
+
+	<div class="push"></div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('Main.Boilerplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

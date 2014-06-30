@@ -1,0 +1,147 @@
+
+<?php $__env->startSection('title'); ?>
+  <title><?php echo e($data->getTitle()); ?> - <?php echo trans('main.brand'); ?></title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('assets'); ?>
+
+  @parent
+  
+  <meta name="title" content="<?php echo e($data->getTitle() . ' - ' . trans('main.brand')); ?>">
+  <meta name="description" content="<?php echo e($data->getPlot()); ?>">
+  <meta name="keywords" content="<?php echo trans('main.meta title keywords'); ?>">
+  <meta property="og:title" content="<?php echo e($data->getTitle() . ' - ' . trans('main.brand')); ?>"/>
+  <meta property="og:url" content="<?php echo Request::url(); ?>"/>
+  <meta property="og:site_name" content="<?php echo trans('main.brand'); ?>"/>
+  <meta property="og:image" content="<?php echo str_replace('w342', 'original', asset($data->getPoster())); ?>"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="{{ trans('main.brand') }}">
+  <meta name="twitter:title" content="<?php echo $data->getTitle(); ?>">
+  <meta name="twitter:description" content="<?php echo $data->getPlot(); ?>">
+  <meta name="twitter:image" content="<?php echo $data->getPoster(); ?>">
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('bodytag'); ?>
+  <body class="nav-trans animate-nav title-page tabs-title" data-url="<?php echo url(); ?>">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+  <?php echo $__env->make('Titles.Partials.Jumbotron', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+  <section class="container push-footer-wrapper">
+
+    <div class="yt-modal-box"></div> 
+    
+    <div class="row ads-row">
+      <?php if($ad = $options->getTitleJumboAd()): ?>
+        <?php echo $ad; ?>
+      <?php endif; ?>
+    </div>
+    
+    <div class="row responses"> <?php echo $__env->make('Partials.Response', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> </div>
+
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="description">
+        <?php echo $__env->make('Titles.Themes.Tabs.Description', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      </div>
+
+      <div class="tab-pane fade" id="cast">
+        <?php echo $__env->make('Titles.Themes.Tabs.Cast', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      </div>
+
+      <div class="tab-pane fade" id="reviews">
+        <?php echo $__env->make('Titles.Themes.Tabs.Reviews', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      </div>
+
+      <div class="tab-pane fade" id="similar">
+        <?php echo $__env->make('Titles.Themes.Tabs.Similar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      </div>
+    </div>
+
+    <?php if (isset($disqus)): ?>
+
+      <section class="disqus row">
+        <div class="bordered-heading"><span style="border-color:<?php echo $options->getColor('warning'); ?>;color:<?php echo $options->getColor('warning'); ?>" class="text-border-top"><i class="fa fa-comments"></i> <?php echo trans('main.comments'); ?></div>
+        <div id="disqus_thread"></div>
+      </section>
+
+      <?php echo $__env->make('Titles.Partials.Disqus', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php endif; ?>
+  <div class="push"></div>
+  </section><?php /*container*/ ?>
+
+<div class="modal fade animated fadeInBig" id="img-modal">
+  <div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div>
+</div>
+
+
+<?php $__env->startSection('scripts'); ?>
+
+<script>
+
+(function ($){
+
+  $('#imdb-rate').raty({
+    readOnly: true, 
+    score: '<?php echo $data->getImdbRating(); ?>', 
+    path: '../assets/images',
+    halfShow : true,
+    number: 10,
+    width: 260,
+  });
+
+  $('#mc-user-rate').raty({
+    readOnly: true, 
+    score: '<?php echo $data->getMcUserRate(); ?>', 
+    path: '../assets/images',
+    halfShow : true,
+    number: 10,
+    width: 260,
+  });
+
+  $('#tmdb-rate').raty({
+    readOnly: true, 
+    score: '<?php echo $data->getTmdbRating(); ?>', 
+    path: '../assets/images',
+    halfShow : true,
+    number: 10,
+    width: 260,
+  });
+
+   $('#mc-critic-rate').raty({
+    readOnly: true, 
+    score: '<?php echo $data->getMcCriticRate("convert"); ?>', 
+    path: '../assets/images',
+    halfShow : true,
+    number: 10,
+    width: 260,
+  });
+
+})(jQuery);
+
+   //add 0 comments to jumbotron if not already there.
+  (function ($){
+   
+    if ( ! $('.disqus-link').text().trim().length)
+    {
+      $(".disqus-link").text('0 <?php echo trans("main.comments"); ?>');
+    }
+
+  })(jQuery);
+
+</script>
+
+<?php $__env->stopSection(); ?>
+
+<noscript><?php echo trans('main.enable js'); ?></noscript>
+    
+<?php $__env->stopSection(); ?>
+
+
+  
+
+
+<?php echo $__env->make('Main.Boilerplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

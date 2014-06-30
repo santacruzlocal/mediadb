@@ -1,0 +1,20 @@
+<!-- Begin sidebar column -->
+<div class="span4 sidebar page-right-sidebar">
+
+
+  <?php $__env->startSection('sidebar-right'); ?>
+
+<?php echo $__env->make('Partials.Sidebar.LoginTabs', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<p>
+<?php echo $__env->make('Partials.Sidebar.Twitter', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</p>
+
+<p>
+<?php echo $__env->make('Partials.Sidebar.News', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</p>
+  <?php echo $__env->yieldSection(); ?>
+
+
+        </div>
+<!-- End sidebar column -->

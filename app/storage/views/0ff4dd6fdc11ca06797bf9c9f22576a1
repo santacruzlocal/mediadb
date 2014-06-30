@@ -1,0 +1,35 @@
+<?php if ( ! empty($similar) && isset($similar[1]) ): ?>
+
+<section id="grid2" class="browse-grid">
+
+    <?php foreach($similar as $k => $v): ?>
+
+      <?php if ( !($v->title == $data->getTitle())): ?>
+
+        <figure class="col-sm-2">
+
+          <div class="img-container">
+            
+            <a href="<?php echo Helpers::url($v->title, $v->id, $v->type); ?>">
+              <img src="<?php echo e($v->poster ? asset($v->poster) : asset('assets/images/imdbnoimage.jpg')); ?>" class="img-responsive" alt="<?php echo 'Picture of ' . $v->title; ?>">
+            </a>         
+            
+            <figcaption>
+              <a href="<?php echo Helpers::url($v->title, $v->id, $v->type); ?>"><?php echo Helpers::shrtString($v->title, 25); ?></a>
+            </figcaption>
+
+          </div>
+
+        </figure>
+
+      <?php endif; ?> 
+
+    <?php endforeach; ?>
+
+</section>
+
+<?php else: ?>
+
+<div><h3 class="reviews-not-released"><i class="fa fa-exclamation-circle"></i> <?php echo trans('main.no similar movies'); ?></h3></div>
+
+<?php endif; ?>

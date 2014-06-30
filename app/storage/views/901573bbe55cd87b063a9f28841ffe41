@@ -1,0 +1,30 @@
+
+<?php $__env->startSection('htmltag'); ?>
+  <html id="not-found" class="nav-no-border" style="background: url( <?php echo e(asset('assets/images/' . $bg)); ?> )">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title'); ?>
+  <title><?php echo '404 - ' . trans('main.brand'); ?></title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+  <div class="container push-footer-wrapper">
+    <div class="col-sm-2"></div>
+
+    <div class="col-sm-8 centered-box">
+    
+      <h1>404</h1>
+      <p><?php echo trans('main.404 page message'); ?></p>
+    
+    </div>
+
+  <div class="col-sm-2"></div>
+
+  <div class="push"></div>
+
+  </div>
+<?php $__env->stopSection(); ?>
+
+  <?php $__env->startSection('ads'); ?>
+  <?php $__env->stopSection(); ?>
+<?php echo $__env->make('Main.Boilerplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

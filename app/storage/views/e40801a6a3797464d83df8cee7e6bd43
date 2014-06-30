@@ -1,0 +1,174 @@
+<section class="row images-row">
+
+     <?php if ($data->getImages()): ?>
+
+     	<div id="links">
+
+         <?php foreach(array_slice($data->getImages(), 0, 6) as $k => $img): ?>
+    
+          <a href="<?php echo asset(Helpers::original($img)); ?>" class="col-sm-2 col-xs-6 image-col" data-gallery>
+            <img src="<?php echo e(Helpers::thumb($img)); ?>" data-num="<?php echo $k; ?>" data-original="<?php echo Helpers::original(asset($img)); ?>" alt="<?php echo 'Still of ' . $data->getTitle(); ?>" class="img-responsive pull-left thumb lightbox">
+          </a>
+        
+         <?php endforeach; ?>
+
+        </div>
+
+        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" >
+	        <div class="slides"></div>
+	        <h3 class="title"></h3>
+	        <a class="prev">‹</a>
+	        <a class="next">›</a>
+	        <a class="close">×</a>
+	        <a class="play-pause"></a>
+	        <ol class="indicator"></ol>
+	    </div>
+
+     <?php endif; ?>
+
+    
+
+</section>
+
+<section class="row">
+	<div class="col-sm-6">
+
+		<?php if ($data->getTagline()): ?>
+			<h3><?php echo e($data->getTagline()); ?></h3>
+		<?php endif; ?>
+
+		<?php if ($data->getPlot()): ?>
+			<p><?php echo e($data->getPlot()); ?></p>
+		<?php endif; ?>
+
+		<?php if ($data->getAwards()): ?>
+
+		<p class="row well actor-awards" style="background-color:<?php echo $data->getJumboMenuColor(); ?>">
+    		<i class="fa fa-trophy"></i> 
+       		<?php echo e($data->getAwards()); ?>
+       	</p>
+
+		<?php endif; ?>
+
+		<?php if ($custom = $data->getCustomField()): ?>
+			<p><?php echo $custom; ?> </p>
+		<?php endif; ?>
+	</div>
+	<div class="col-sm-1"></div>
+	<div class="col-sm-5">
+
+		<h3><?php echo trans('main.details'); ?></h3>
+
+		<dl class="dl-horizontal title-desc-crew">
+				
+			<div class="title-dt-group">
+				<?php if ($directors = $data->getDirectors()): ?>
+
+					<dt><?php echo trans('main.directors'); ?>:</dt>
+			  		<dd>
+				  		<?php foreach($directors as $d): ?>
+							<?php echo e($d['name']); ?>,
+				  		<?php endforeach; ?>
+			  		</dd>
+
+				<?php endif; ?>
+			</div>
+
+			<div class="title-dt-group">
+				<?php if ($writers = $data->getWriters()): ?>
+
+					<dt><?php echo trans('main.writing'); ?>:</dt>
+			  		<dd>
+				  		<?php foreach($writers as $w): ?>
+							<?php echo e($w['name']); ?>,
+				  		<?php endforeach; ?>
+			  		</dd>
+
+
+				<?php endif; ?>
+			</div>
+
+			<div class="title-dt-group">
+				<?php if ($stars = array_slice($data->getCast(), 0, 3)): ?>
+
+					<dt><?php echo trans('main.stars'); ?>:</dt>
+			  		<dd>
+				  		<?php foreach($stars as $s): ?>
+							<a href="<?php echo Helpers::url($s['name'], $s['id'], 'people'); ?>"><?php echo e($s['name']); ?></a>,
+				  		<?php endforeach; ?>
+			  		</dd>
+
+				<?php endif; ?>
+		  	</div>
+
+			<?php if ($country = $data->getCountry()): ?>
+		  		<div class="title-dt-group">
+					<dt><?php echo trans('main.country'); ?>:</dt>
+			  		<dd><?php echo e($country); ?></dd>				
+		  		</div>
+		  	<?php endif; ?>
+
+		  	<?php if ($language = $data->getLanguage()): ?>
+		  		<div class="title-dt-group">
+					<dt><?php echo trans('main.lang'); ?>:</dt>
+			  		<dd><?php echo e($language); ?></dd>				
+		  		</div>
+		  	<?php endif; ?>
+
+		  	<?php if ($data->getRating()): ?>
+
+				<h3><?php echo trans('main.ratings'); ?></h3>
+
+		  	<?php endif; ?>
+
+		  	<div class="title-ratings">
+				<?php if ($imdb = $data->getImdbRating()): ?>
+					<dt>IMDb <?php echo trans('main.rating'); ?>:</dt>			
+					<dd id="imdb-rate"><strong class="pull-right">(<?php echo $imdb; ?>/10)</strong></dd>
+				<?php endif; ?>			
+		  	</div>
+
+			<div class="title-ratings">
+			  	<?php if ($mcUser = $data->getMcUserRate()): ?>
+					<dt>Metacritic <?php echo trans('main.user'); ?>:</dt>			
+					<dd id="mc-user-rate"><strong class="pull-right">(<?php echo $mcUser; ?>/10)</strong></dd>
+				<?php endif; ?>
+			</div>
+
+			<div class="title-ratings">
+			  	<?php if ($mcCritic = $data->getMcCriticRate()): ?>
+					<dt>Metacritic <?php echo trans('main.critic'); ?>:</dt>			
+					<dd id="mc-critic-rate"><strong class="pull-right">(<?php echo $mcCritic; ?>/10)</strong></dd>
+				<?php endif; ?>
+				<div class="raty"></div>
+			</div>
+
+			<div class="title-ratings">
+			  	<?php if ($data->getTmdbRating() && Carbon\Carbon::parse($data->getReleaseDate()) < Carbon\Carbon::now()->toDateString()): ?>
+					<dt>TMDB <?php echo trans('main.rating'); ?>:</dt>			
+					<dd id="tmdb-rate"><strong class="pull-right">(<?php echo $data->getTmdbRating(); ?>/10)</strong></dd>
+				<?php endif; ?>
+			</div>
+
+			<?php if ($data->getBudget() || $data->getRevenue()): ?>
+				<h3><?php echo trans('main.box office'); ?></h3>
+			<?php endif; ?>
+			
+			<?php if ($budget = $data->getBudget()): ?>
+				<div class="title-ratings">		  	
+					<dt><?php echo trans('main.budget'); ?>:</dt>			
+					<dd><?php echo $budget; ?></dd>				
+				</div>
+			<?php endif; ?>
+
+			<?php if ($revenue = $data->getRevenue()): ?>
+				<div class="title-ratings">		  	
+					<dt><?php echo trans('main.revenue'); ?>:</dt>			
+					<dd><?php echo $revenue; ?></dd>				
+				</div>
+			<?php endif; ?>
+
+		</dl>
+
+	</div>
+</section>

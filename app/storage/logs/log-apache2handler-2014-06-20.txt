@@ -1,0 +1,278 @@
+[2014-06-20 03:24:17] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Captcha' not found' in /var/www/html/tmdb/app/storage/views/0edf70c1372a6064786cbb6757be5354:37
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-20 06:09:56] local.ERROR: exception 'InvalidArgumentException' with message 'Route [help] not defined.' in /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:207
+Stack trace:
+#0 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Support/helpers.php(734): Illuminate\Routing\UrlGenerator->route('help', Array)
+#1 /var/www/html/tmdb/app/storage/views/cb66be55e8e65cfea80c4e80fa5ae623(64): route('help')
+#2 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#3 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#4 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#5 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#7 /var/www/html/tmdb/app/storage/views/639bff22d8b5504980f54428726df8a1(75): Illuminate\View\View->render()
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#10 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#13 /var/www/html/tmdb/app/storage/views/634b45f447490fbb85e2e48a0151e249(68): Illuminate\View\View->render()
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#18 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render()
+#20 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(202): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1342): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#22 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(971): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#23 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#24 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#25 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#26 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#27 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#28 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#29 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#30 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#31 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#32 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#33 {main}
+
+Next exception 'ErrorException' with message 'Route [help] not defined. (View: /var/www/html/tmdb/app/views/Partials/Footer.blade.php)' in /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:207
+Stack trace:
+#0 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(41): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException))
+#1 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#2 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#3 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /var/www/html/tmdb/app/storage/views/639bff22d8b5504980f54428726df8a1(75): Illuminate\View\View->render()
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#10 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#11 /var/www/html/tmdb/app/storage/views/634b45f447490fbb85e2e48a0151e249(68): Illuminate\View\View->render()
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render()
+#18 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(202): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1342): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#20 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(971): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#22 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#23 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#24 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#25 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#26 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#27 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#28 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#29 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#30 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#31 {main}
+
+Next exception 'ErrorException' with message 'Route [help] not defined. (View: /var/www/html/tmdb/app/views/Partials/Footer.blade.php) (View: /var/www/html/tmdb/app/views/Partials/Footer.blade.php)' in /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:207
+Stack trace:
+#0 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(41): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException))
+#1 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#2 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#3 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /var/www/html/tmdb/app/storage/views/634b45f447490fbb85e2e48a0151e249(68): Illuminate\View\View->render()
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#10 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render()
+#12 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(202): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1342): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(971): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#18 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#20 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#22 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#23 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#24 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#25 {main}
+
+Next exception 'ErrorException' with message 'Route [help] not defined. (View: /var/www/html/tmdb/app/views/Partials/Footer.blade.php) (View: /var/www/html/tmdb/app/views/Partials/Footer.blade.php) (View: /var/www/html/tmdb/app/views/Partials/Footer.blade.php)' in /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:207
+Stack trace:
+#0 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(41): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException))
+#1 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#2 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#3 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render()
+#6 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(202): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1342): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(971): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#10 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#16 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#18 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#19 {main} [] []
+[2014-06-20 07:59:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_ENDIF' in /var/www/html/tmdb/app/storage/views/1f22e3429db5a43bed7d10f744a64764:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-20 07:59:32] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_ENDIF' in /var/www/html/tmdb/app/storage/views/1f22e3429db5a43bed7d10f744a64764:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-20 17:21:42] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_ENDIF' in /var/www/html/tmdb/app/storage/views/1f22e3429db5a43bed7d10f744a64764:62
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-20 17:21:43] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_ENDIF' in /var/www/html/tmdb/app/storage/views/1f22e3429db5a43bed7d10f744a64764:62
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-20 17:23:13] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_ENDIF' in /var/www/html/tmdb/app/storage/views/1f22e3429db5a43bed7d10f744a64764:62
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-20 17:23:13] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_ENDIF' in /var/www/html/tmdb/app/storage/views/1f22e3429db5a43bed7d10f744a64764:62
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-20 17:25:42] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /var/www/html/tmdb/app/lib/Helpers.php:382
+Stack trace:
+#0 /var/www/html/tmdb/app/lib/Helpers.php(382): Illuminate\Exception\Handler->handleError(8, 'Trying to get p...', '/var/www/html/t...', 382, Array)
+#1 /var/www/html/tmdb/app/storage/views/1f22e3429db5a43bed7d10f744a64764(61): Helpers::profileUrl()
+#2 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#3 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#4 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#5 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#7 /var/www/html/tmdb/app/storage/views/639bff22d8b5504980f54428726df8a1(63): Illuminate\View\View->render()
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#10 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#13 /var/www/html/tmdb/app/storage/views/634b45f447490fbb85e2e48a0151e249(68): Illuminate\View\View->render()
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#18 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render()
+#20 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(202): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1342): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#22 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(971): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#23 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#24 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#25 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#26 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#27 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#28 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#29 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#30 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#31 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#32 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#33 {main}
+
+Next exception 'ErrorException' with message 'Trying to get property of non-object (View: /var/www/html/tmdb/app/views/Partials/Header.blade.php)' in /var/www/html/tmdb/app/lib/Helpers.php:382
+Stack trace:
+#0 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(41): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException))
+#1 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#2 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#3 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /var/www/html/tmdb/app/storage/views/639bff22d8b5504980f54428726df8a1(63): Illuminate\View\View->render()
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#10 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#11 /var/www/html/tmdb/app/storage/views/634b45f447490fbb85e2e48a0151e249(68): Illuminate\View\View->render()
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render()
+#18 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(202): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1342): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#20 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(971): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#22 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#23 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#24 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#25 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#26 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#27 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#28 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#29 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#30 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#31 {main}
+
+Next exception 'ErrorException' with message 'Trying to get property of non-object (View: /var/www/html/tmdb/app/views/Partials/Header.blade.php) (View: /var/www/html/tmdb/app/views/Partials/Header.blade.php)' in /var/www/html/tmdb/app/lib/Helpers.php:382
+Stack trace:
+#0 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(41): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException))
+#1 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#2 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#3 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /var/www/html/tmdb/app/storage/views/634b45f447490fbb85e2e48a0151e249(68): Illuminate\View\View->render()
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/var/www/html/t...')
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#10 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render()
+#12 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(202): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1342): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(971): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#18 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#20 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#22 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#23 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#24 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#25 {main}
+
+Next exception 'ErrorException' with message 'Trying to get property of non-object (View: /var/www/html/tmdb/app/views/Partials/Header.blade.php) (View: /var/www/html/tmdb/app/views/Partials/Header.blade.php) (View: /var/www/html/tmdb/app/views/Partials/Header.blade.php)' in /var/www/html/tmdb/app/lib/Helpers.php:382
+Stack trace:
+#0 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(41): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException))
+#1 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/t...', Array)
+#2 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/t...', Array)
+#3 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render()
+#6 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(202): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1342): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(971): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#10 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#16 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#18 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#19 {main} [] []
+[2014-06-20 23:34:26] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_STRING' in /var/www/html/tmdb/app/storage/views/634b45f447490fbb85e2e48a0151e249:44
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

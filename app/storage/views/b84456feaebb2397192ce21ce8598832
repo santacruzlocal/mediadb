@@ -1,0 +1,170 @@
+
+<?php $__env->startSection('assets'); ?>
+
+  @parent
+
+  <meta name="title" content="<?php echo trans('main.meta title'); ?>">
+  <meta name="description" content="<?php echo trans('main.meta description'); ?>">
+
+  <meta name="keywords" content="<?php echo trans('main.meta keywords'); ?>">
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('bodytag'); ?>
+	<body id="home" class="nav-trans animate-nav">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('nav'); ?>
+	<?php echo $__env->make('Partials.Navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+ 
+  <?php echo $__env->make('Partials.Jumbotron', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <div class="home container push-footer-wrapper">
+    
+		<div class="row ads-row">
+          <?php if($ad = $options->getHomeJumboAd()): ?>
+            <?php echo $ad; ?>
+          <?php endif; ?>
+		</div>
+
+    	<div class="yt-modal-box"></div>
+
+    	<?php echo $__env->make('Partials.Response', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	  <?php /*News column*/ ?>
+	  <div class="col-sm-8 home-news">
+	    <div class="bordered-heading">
+	    	<span style="border-color:<?php echo $options->getColor('warning'); ?>;color:<?php echo $options->getColor('warning'); ?>" class="text-border-top"><i class="fa fa-bullhorn"></i> <?php echo trans('main.latest news'); ?></span>
+
+			<a href="<?php echo route('feed.news'); ?>" class="pull-right feed-ico"><i class="fa fa-rss"></i> </a>
+
+	    	<?php if (Helpers::hasAccess('news.update')): ?>
+
+					<?php echo Form::open(array('url' => 'news/external', 'class' => 'pull-right in-heading-form')); ?>
+
+                    	<button type="submit" class="btn btn-info btn-xs"><i class="fa fa-refresh"></i> <?php echo trans('dash.update'); ?></button>
+
+                  	<?php echo Form::close(); ?>
+
+				<?php endif; ?>
+
+	    	<?php if (Helpers::hasAccess('news.create')): ?>
+				<a href="<?php echo route(Str::slug(trans('main.news')) . '.create'); ?>" id="create-news" class="pull-right btn btn-info btn-xs"><i class="fa fa-pencil"></i> <?php echo trans('dash.create'); ?></a>
+			<?php endif; ?>
+
+
+	    </div>
+
+	  	  <?php foreach($news as $k => $n): ?>
+
+		    <?php if ($k == 3): ?>
+
+	            <?php if($ad = $options->getHomeNewsAd()): ?>
+	            	<div class="row ads-row"><?php echo $ad; ?></div>
+	            <?php endif; ?>
+
+		    <?php endif; ?>
+
+		    <div class="media">
+				<?php if ($options->scrapeNewsFully()): ?>
+					<a class="pull-left hidden-xs" href="<?php echo e(Helpers::url($n->title, $n->id, 'news')); ?>">
+						<img style="max-width:235px" class="media-object img-responsive" src="<?php echo e(asset($n->image)); ?>" alt="<?php echo 'Image of News Item' . $k; ?>">
+					</a>
+			 	<?php else: ?>
+			    	<a class="pull-left hidden-xs" href="<?php echo e($n->full_url ? $n->full_url : url('news', $n->id)); ?>">
+					    <img style="max-width:235px" class="media-object img-responsive" src="<?php echo e(asset($n->image)); ?>" alt="<?php echo 'Image of News Item' . $k; ?>">
+					</a>
+		      	<?php endif; ?>
+
+			  <div class="media-body">
+
+			  	<?php if ($options->scrapeNewsFully()): ?>
+					<h4 class="media-heading"><a href="<?php echo e(Helpers::url($n->title, $n->id, 'news')); ?>"><?php echo e($n['title']); ?></a> </h4>
+			   <?php else: ?>
+			       <h4 class="media-heading"><a href="<?php echo e($n['full_url'] ? $n['full_url'] : Helpers::url($n->title, $n->id, 'news')); ?>"><?php echo e($n['title']); ?></a> </h4>
+		       <?php endif; ?>
+			    
+
+			    <p class="home-news-body">
+
+			      <?php echo Helpers::shrtString($n['body'], $options->getNewsExeLen()); ?>
+
+			     </p>
+
+			     <span class="home-news-time pull-left"> <?php echo trans('main.from'); ?> <?php echo e($n['source'] ? $n['source'] : trans('main.brand')); ?>
+			       <span class="home-news-ago"><i class="fa fa-clock-o"></i> 
+			           <?php echo \Carbon\Carbon::createFromTimeStamp(strtotime($n['created_at']))->diffForHumans(); ?>
+			       </span>
+
+			       <?php if ($options->scrapeNewsFully()): ?>
+						<a href="<?php echo e(Helpers::url($n->title, $n->id, 'news')); ?>"><?php echo trans('main.read full article'); ?> <i class="fa fa-external-link"></i></a>
+				   <?php else: ?>
+				       <a href="<?php echo e($n['full_url'] ? $n['full_url'] : Helpers::url($n->title, $n->id, 'news')); ?>"><?php echo trans('main.read full article'); ?> <i class="fa fa-external-link"></i></a>
+			       <?php endif; ?>
+
+			     </span>
+			   </div>
+			</div>
+
+	  	  <?php endforeach; ?>
+	  </div>
+	  <?php /*news coloumn ends*/ ?>
+
+	  <?php /*in theaters now begins*/ ?>
+	  <div class="col-sm-4">
+	    <div class="bordered-heading"><span style="border-color:<?php echo $options->getColor('warning'); ?>;color:<?php echo $options->getColor('warning'); ?>" class="text-border-top"><i class="fa fa-fire"></i><?php echo trans('main.in theaters'); ?></span>
+			<a href="<?php echo route('feed.theaters'); ?>" class="pull-right feed-ico"><i class="fa fa-rss"></i> </a>
+
+			<?php if (Helpers::hasAccess('titles.update')): ?>
+
+				<?php echo Form::open(array('route' => 'titles.updatePlaying', 'class' => 'pull-right in-heading-form')); ?>
+
+                	<button type="submit" class="btn btn-info btn-xs"><i class="fa fa-refresh"></i> <?php echo trans('dash.update'); ?></button>
+
+              	<?php echo Form::close(); ?>
+
+			<?php endif; ?>
+
+	    </div>
+
+	  	  <section id="grid" class="browse-grid wookmark-fix">
+ 
+          <?php foreach($playing as $k => $movie): ?>
+
+            <figure class="col-xs-6">
+
+              <a href="<?php echo Helpers::url($movie['title'], $movie['id'], $movie['type']); ?>">
+                <img src="<?php echo e(asset($movie['poster'])); ?>" class="img-responsive" alt="<?php echo 'Poster of ' . $movie['title']; ?>">
+              </a>         
+              
+              <figcaption>
+                <a href="<?php echo Helpers::url($movie['title'], $movie['id'], $movie['type']); ?>"><?php echo e($movie['title']); ?></a> <br>
+              </figcaption>
+            </figure> 
+
+          <?php endforeach; ?>
+
+        </section>
+
+        <?php if (isset($facebook)): ?>
+
+			<div class="col-sm-12 likebox">    	
+				<iframe src="//www.facebook.com/plugins/likebox.php?href=<?php echo e($facebook); ?>&amp;width&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:290px;" allowTransparency="true"></iframe>
+        	</div>
+
+        <?php endif; ?>      
+	</div>
+	<div class="push"></div>
+</div><?php /*container*/ ?>
+ 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+
+	<?php echo HTML::script('assets/js/home-autocomplete.js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('Main.Boilerplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

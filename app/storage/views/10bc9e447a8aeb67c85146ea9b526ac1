@@ -1,0 +1,131 @@
+<section id="tabs-id" data-id="<?php echo $data->getId(); ?>" class="jumbotron title" style="background-image: url(<?php echo e(asset($data->getBackground())); ?>)">
+  <div class="transparent">
+    <section class="row title-jumbo-row">
+      <a href="<?php echo Helpers::url($data->getTitle(), $data->getId(), $data->getType()); ?>" class="col-sm-2 hidden-xs hidden-sm title-poster"><img class="img-responsive" src="<?php echo e(asset($data->getPoster())); ?>" alt="<?php echo e($data->getTitle()); ?>"></a>
+
+      <?php if (Request::segment(1) == 'series'): ?>
+        <div class="col-sm-12 col-md-10 title-jumbo-text" style="margin-top:0px">
+      <?php else: ?>
+        <div class="col-sm-12 col-md-10 title-jumbo-text">
+      <?php endif; ?>    
+
+        <div class="row"><a href="<?php echo Helpers::url($data->getTitle(), $data->getId(), $data->getType()); ?>" class="title-title"><?php echo $data->getTitle(); ?></a></div>
+        <div class="row title-info">
+
+          <?php if ($data->getRuntime()): ?>
+            <span><?php echo $data->getRuntime() . ' ' . trans('main.min'); ?></span> - 
+          <?php endif; ?>
+
+          <?php if ($data->getGenre()): ?>
+            <span><?php echo $data->getGenre(); ?></span> - 
+          <?php endif; ?>
+
+           <?php if ($data->getReleasedate()): ?>
+            <span><?php echo $data->getReleasedate(); ?></span>
+          <?php endif; ?>
+          
+        </div>
+
+        <div class="row">
+          <?php if ($data->getTrailer()): ?>
+            <button type="button" class="btn trans-button trailer-trigger" data-trailer="<?php echo e($data->getTrailer()); ?>">
+              <span><i class="fa fa-play"></i> <?php echo trans('main.play trailer'); ?></span>
+            </button>
+          <?php endif; ?>
+          <a target="_blank" href="<?php echo e($data->getBuyLink()); ?>" class="btn trans-button">
+            <span><i class="fa fa-money"></i> <?php echo trans('main.buy now'); ?></span>
+          </a>
+
+          <?php if ( Helpers::hasAccess('titles.edit') ): ?>
+
+            <div class="btn-group">
+              <button id="btnGroupDrop1" type="button" class="btn trans-button dropdown-toggle" data-toggle="dropdown">
+                <span class="drop-trans"><i class="fa fa-edit"></i> <?php echo trans('main.edit'); ?></span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu trans-menu" role="menu" aria-labelledby="btnGroupDrop1">
+                <li><a href="<?php echo Helpers::url($data->getTitle(), $data->getid(), $data->getType()) . '/edit'; ?>"><?php echo trans('main.edit main'); ?></a></li>
+                <li><a href="<?php echo Helpers::url($data->getTitle(), $data->getid(), $data->getType()) . '/edit-cast'; ?>"><?php echo trans('dash.edit cast'); ?></a></li>
+                <li><a href="<?php echo Helpers::url($data->getTitle(), $data->getid(), $data->getType()) . '/edit-images'; ?>"><?php echo trans('main.edit images'); ?></a></li>
+                <?php if ($data->getType() == 'series'): ?>
+                  <li><a href="<?php echo Helpers::url($data->getTitle(), $data->getid(), 'series') . '/seasons/create'; ?>"><?php echo trans('main.edit seasons'); ?></a></li>
+                <?php endif; ?>
+              </ul>
+            </div>
+          </div>
+
+        <?php endif; ?>
+
+        <div class="row title-social">
+        
+          <?php if ( !( ! isset($disqus))): ?>
+            <div><i class="fa fa-comment green-fill"></i> <a class="disqus-link" href="<?php echo Request::fullUrl(); ?>#disqus_thread"></a></div>
+          <?php endif; ?>
+          
+          <div><i class="fa fa-facebook blue-fill fix-circle"></i> <div id="facebook" data-url="<?php echo Request::fullUrl(); ?>" data-text='<?php echo "{$data->getTitle()} - " . trans("main.twitter txt"); ?>' data-title="Likes"></div></div>
+          <div><i class="fa fa-twitter blue-fill "></i> <div id="twitter" data-url="<?php echo Request::fullUrl(); ?>" data-text='<?php echo "{$data->getTitle()} - " . trans("main.twitter txt"); ?>' data-title="Tweets"></div></div>
+          <div><i class="fa fa-pinterest orange-fill "></i> <div id="pinterest" data-url="<?php echo Request::fullUrl(); ?>" data-text='<?php echo "{$data->getTitle()} - " . trans("main.twitter txt"); ?>' data-title="Pins"></div></div>
+        </div>
+
+        <div class="row title-plot">
+              <?php echo $data->getPlot(300); ?>
+        </div>
+
+        <div class="row no-mar-right" id="title-votes-row">
+            <div class="col-sm-6 title-seasons">
+                            
+              <?php if ($data->getType() == 'series'): ?>
+
+                <?php echo trans('main.seasons'); ?>:           
+
+                <?php foreach ($data->getSeasons() as $v): ?>
+
+                  <?php if ($v->number == Request::segment(4)): ?>
+
+                    <a href="<?php echo Helpers::season($data->getTitle(), $v); ?>" class="active"><?php echo e($v->number); ?></a> |
+
+                  <?php else: ?>
+
+                    <a href="<?php echo Helpers::season($data->getTitle(), $v); ?>"><?php echo e($v->number); ?></a> |
+
+                  <?php endif; ?>
+
+                <?php endforeach; ?>
+
+                  <?php if (Helpers::hasAccess('titles.create') && $options->getTitleView() == 'NoTabs'): ?>
+
+                    <a class="title-new-s" href="<?php echo Helpers::url($data->getTitle(), $data->getId(), 'series') . '/seasons/create'; ?>"><?php echo trans('main.new'); ?></a>
+
+                  <?php endif; ?>
+
+              <?php endif; ?>
+            </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</section>
+<div class="btn-group btns-under-jumbo center-block" style="background-color: <?php echo $data->getJumboMenuColor(); ?>">
+
+  <ul>
+    <?php if(Request::segment(3) == 'seasons' && Request::segment(4)): ?>
+      <li class="active"><a href="#episodes" class="btn btn-default no-bord-left" data-toggle="tab"><?php echo trans('main.eps'); ?></a></li>
+      <li><a href="#description" class="btn btn-default no-bord-left" data-toggle="tab"><i class="visible-xs fa fa-tasks"></i><span class="hidden-xs"><?php echo trans('main.description'); ?></span></a></li>
+    <?php else: ?>
+      <li class="active"><a href="#description" class="btn btn-default no-bord-left" data-toggle="tab"><i class="visible-xs fa fa-tasks"></i><span class="hidden-xs"><?php echo trans('main.description'); ?></span></a></li>
+    <?php endif; ?>
+    <li><a id="trigger" href="#cast" class="btn btn-default" data-toggle="tab"><i class="fa visible-xs fa-users"></i><span class="hidden-xs"><?php echo trans('main.cast'); ?> &amp; <?php echo trans('main.crew'); ?></span></a></li>
+    <li><a href="#reviews" class="btn btn-default" data-toggle="tab"><i class="fa visible-xs fa-thumbs-up"></i><span class="hidden-xs"><?php echo trans('main.reviews'); ?></span></a></li>
+      <?php if(Request::segment(3) == 'seasons' && Request::segment(4) && Helpers::hasAccess('titles.create')): ?>
+      <li><a class="btn btn-default" href='<?php echo url(Str::slug(trans("main.series")) . "/" . $data->getId() . "/seasons/$num/episodes/create"); ?>'><i class="fa fa-video-camera visible-xs"></i><strong class="hidden-xs"><?php echo trans('main.create new epi'); ?></strong></a></li>
+    <?php endif; ?>
+    <li><a id="trigger2" href="#similar" class="btn btn-default no-bord-right" data-toggle="tab"><i class="fa fa-video-camera visible-xs"></i><span class="hidden-xs"><?php echo trans('main.moviesseries'); ?></span></a></li>
+  </ul>
+  
+  <div class="jumbo-watchlist-btns">
+    <?php echo $__env->make('Titles.Themes.Tabs.TitleListButtons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+  </div>
+
+ 
+</div>

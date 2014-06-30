@@ -1,0 +1,132 @@
+[2014-06-18 00:21:40] local.ERROR: exception 'Symfony\Component\HttpFoundation\File\Exception\FileException' with message 'Unable to write in the "/var/www/html/tmdb/assets/images/" directory' in /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/File.php:137
+Stack trace:
+#0 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/UploadedFile.php(243): Symfony\Component\HttpFoundation\File\File->getTargetFile('/var/www/html/t...', 'ChV9VLTQjccTfE8...')
+#1 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Includes/Multup.php(211): Symfony\Component\HttpFoundation\File\UploadedFile->move('/var/www/html/t...', 'ChV9VLTQjccTfE8...')
+#2 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Includes/Multup.php(130): Frozennode\Administrator\Includes\Multup->upload_image()
+#3 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Fields/Image.php(38): Frozennode\Administrator\Includes\Multup->upload()
+#4 /var/www/html/tmdb/vendor/frozennode/administrator/src/controllers/AdminController.php(430): Frozennode\Administrator\Fields\Image->doUpload()
+#5 [internal function]: Frozennode\Administrator\AdminController->fileUpload('appearance', 'logo')
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(194): call_user_func_array(Array, Array)
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(92): Illuminate\Routing\Controller->callAction('fileUpload', Array)
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(61): Illuminate\Routing\ControllerDispatcher->call(Object(Frozennode\Administrator\AdminController), Object(Illuminate\Routing\Route), 'fileUpload')
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(904): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'Frozennode\Admi...', 'fileUpload')
+#10 [internal function]: Illuminate\Routing\{closure}('appearance', 'logo')
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(105): call_user_func_array(Object(Closure), Array)
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(968): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#20 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#22 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#23 {main} [] []
+[2014-06-18 00:22:07] local.ERROR: exception 'Symfony\Component\HttpFoundation\File\Exception\FileException' with message 'Unable to write in the "/var/www/html/tmdb/assets/images/" directory' in /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/File.php:137
+Stack trace:
+#0 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/UploadedFile.php(243): Symfony\Component\HttpFoundation\File\File->getTargetFile('/var/www/html/t...', '7S3y65aSD8xzMQj...')
+#1 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Includes/Multup.php(211): Symfony\Component\HttpFoundation\File\UploadedFile->move('/var/www/html/t...', '7S3y65aSD8xzMQj...')
+#2 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Includes/Multup.php(130): Frozennode\Administrator\Includes\Multup->upload_image()
+#3 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Fields/Image.php(38): Frozennode\Administrator\Includes\Multup->upload()
+#4 /var/www/html/tmdb/vendor/frozennode/administrator/src/controllers/AdminController.php(430): Frozennode\Administrator\Fields\Image->doUpload()
+#5 [internal function]: Frozennode\Administrator\AdminController->fileUpload('appearance', 'logo')
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(194): call_user_func_array(Array, Array)
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(92): Illuminate\Routing\Controller->callAction('fileUpload', Array)
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(61): Illuminate\Routing\ControllerDispatcher->call(Object(Frozennode\Administrator\AdminController), Object(Illuminate\Routing\Route), 'fileUpload')
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(904): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'Frozennode\Admi...', 'fileUpload')
+#10 [internal function]: Illuminate\Routing\{closure}('appearance', 'logo')
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(105): call_user_func_array(Object(Closure), Array)
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(968): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#20 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#22 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#23 {main} [] []
+[2014-06-18 00:22:39] local.ERROR: exception 'Symfony\Component\HttpFoundation\File\Exception\FileException' with message 'Unable to write in the "/var/www/html/tmdb/assets/images/" directory' in /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/File.php:137
+Stack trace:
+#0 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/UploadedFile.php(243): Symfony\Component\HttpFoundation\File\File->getTargetFile('/var/www/html/t...', 'EfsAGHf8ailn7kq...')
+#1 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Includes/Multup.php(211): Symfony\Component\HttpFoundation\File\UploadedFile->move('/var/www/html/t...', 'EfsAGHf8ailn7kq...')
+#2 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Includes/Multup.php(130): Frozennode\Administrator\Includes\Multup->upload_image()
+#3 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Fields/Image.php(38): Frozennode\Administrator\Includes\Multup->upload()
+#4 /var/www/html/tmdb/vendor/frozennode/administrator/src/controllers/AdminController.php(430): Frozennode\Administrator\Fields\Image->doUpload()
+#5 [internal function]: Frozennode\Administrator\AdminController->fileUpload('appearance', 'logo')
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(194): call_user_func_array(Array, Array)
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(92): Illuminate\Routing\Controller->callAction('fileUpload', Array)
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(61): Illuminate\Routing\ControllerDispatcher->call(Object(Frozennode\Administrator\AdminController), Object(Illuminate\Routing\Route), 'fileUpload')
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(904): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'Frozennode\Admi...', 'fileUpload')
+#10 [internal function]: Illuminate\Routing\{closure}('appearance', 'logo')
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(105): call_user_func_array(Object(Closure), Array)
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(968): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#20 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#22 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#23 {main} [] []
+[2014-06-18 00:22:51] local.ERROR: exception 'Symfony\Component\HttpFoundation\File\Exception\FileException' with message 'Unable to write in the "/var/www/html/tmdb/assets/images/" directory' in /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/File.php:137
+Stack trace:
+#0 /var/www/html/tmdb/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/UploadedFile.php(243): Symfony\Component\HttpFoundation\File\File->getTargetFile('/var/www/html/t...', 'Cg81n5H2cRGIUKl...')
+#1 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Includes/Multup.php(211): Symfony\Component\HttpFoundation\File\UploadedFile->move('/var/www/html/t...', 'Cg81n5H2cRGIUKl...')
+#2 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Includes/Multup.php(130): Frozennode\Administrator\Includes\Multup->upload_image()
+#3 /var/www/html/tmdb/vendor/frozennode/administrator/src/Frozennode/Administrator/Fields/Image.php(38): Frozennode\Administrator\Includes\Multup->upload()
+#4 /var/www/html/tmdb/vendor/frozennode/administrator/src/controllers/AdminController.php(430): Frozennode\Administrator\Fields\Image->doUpload()
+#5 [internal function]: Frozennode\Administrator\AdminController->fileUpload('appearance', 'logo')
+#6 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(194): call_user_func_array(Array, Array)
+#7 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(92): Illuminate\Routing\Controller->callAction('fileUpload', Array)
+#8 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(61): Illuminate\Routing\ControllerDispatcher->call(Object(Frozennode\Administrator\AdminController), Object(Illuminate\Routing\Route), 'fileUpload')
+#9 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(904): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'Frozennode\Admi...', 'fileUpload')
+#10 [internal function]: Illuminate\Routing\{closure}('appearance', 'logo')
+#11 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Route.php(105): call_user_func_array(Object(Closure), Array)
+#12 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(968): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#13 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Routing/Router.php(938): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#14 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(677): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#15 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(652): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#16 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(38): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(58): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#19 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#20 /var/www/html/tmdb/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#21 /var/www/html/tmdb/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#22 /var/www/html/tmdb/index.php(49): Illuminate\Foundation\Application->run()
+#23 {main} [] []
+[2014-06-18 00:23:29] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Captcha' not found' in /var/www/html/tmdb/app/storage/views/0edf70c1372a6064786cbb6757be5354:37
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-18 00:42:22] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Captcha' not found' in /var/www/html/tmdb/app/storage/views/0edf70c1372a6064786cbb6757be5354:37
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-18 00:42:38] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Captcha' not found' in /var/www/html/tmdb/app/storage/views/0edf70c1372a6064786cbb6757be5354:37
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-18 00:45:33] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Captcha' not found' in /var/www/html/tmdb/app/storage/views/0edf70c1372a6064786cbb6757be5354:37
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-18 00:47:00] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Captcha' not found' in /var/www/html/tmdb/app/storage/views/0edf70c1372a6064786cbb6757be5354:37
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-18 00:47:14] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Captcha' not found' in /var/www/html/tmdb/app/storage/views/0edf70c1372a6064786cbb6757be5354:37
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-06-18 19:25:11] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Captcha' not found' in /var/www/html/tmdb/app/storage/views/0edf70c1372a6064786cbb6757be5354:37
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

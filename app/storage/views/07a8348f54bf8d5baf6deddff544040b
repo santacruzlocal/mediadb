@@ -1,0 +1,70 @@
+
+<?php $__env->startSection('title'); ?>
+
+	<title><?php echo e($user->username); ?> - <?php echo trans('users.profile'); ?></title>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('bodytag'); ?>
+	<body class="padding nav user-profile">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	
+	<div class="container push-footer-wrapper">
+		
+		<?php echo $__env->make('Users.Partials.Header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		<div class="lists-wrapper">
+
+			<?php echo $__env->make('Partials.FilterBar', array('action' => Helpers::url($user->username, $user->id, 'users') . '/' .Request::segment(3)), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			<div id="grid" class="browse-grid">
+
+				<?php foreach (Request::segment(3) == 'favorites' ? $favorite : $watchlist as $w): ?>
+				
+					<figure class="col-sm-3 col-lg-2 col-xs-6" data-filter-class='<?php echo Helpers::genreFilter($w['genre']); ?>' data-popularity="<?php echo e($w['imdb_votes_num']); ?>" data-name="<?php echo e($w['title']); ?>" data-release="<?php echo e($w['year']); ?>">
+				    	<div class="img-container">
+				    		<a href="<?php echo Helpers::url($w['title'], $w['id'], $w['type']); ?>">
+				    			<img class ="img-responsive" src="<?php echo e($w['poster'] ? asset($w['poster']) : asset('assets/images/imdbnoimage.jpg')); ?>" alt="<?php echo e($w['title']); ?>">
+							</a>
+
+					  	  <figcaption title="<?php echo e($w['title']); ?>" >
+					  	  	<a href="<?php echo Helpers::url($w['title'], $w['id'], $w['type']); ?>"> <?php echo Helpers::shrtString($w['title']); ?> </a>
+
+					  	  	<?php if(Helpers::isUser($user->username)): ?>
+							
+						  	  	<?php echo Form::open(array('url' => 'lists/remove', 'class' => 'trash-ico pull-right')); ?>
+
+						  	  	  <?php echo Form::hidden('title', $w['id']); ?>
+						  	  	  <?php echo Form::hidden('user', $user->id); ?>
+						  	  	  <?php echo Form::hidden('list', Request::segment(3) == 'favorites' ? 'favorite' : 'watchlist'); ?>
+						  	  	  <?php echo Form::hidden('name', $w['title']); ?>
+
+				                  <button type = "submit" title="<?php echo trans('dash.remove'); ?>" class="btn btn-danger btn-xs"><i class="fa fa-times"></i> </button> 
+				                <?php echo Form::close(); ?>
+
+				            <?php endif; ?>
+					  	  </figcaption>
+
+				    	</div>	      
+				    </figure>
+				<?php endforeach; ?>
+			</div>
+
+			<?php if (Request::segment(3) == 'favorites'): ?>
+				<?php echo $favorite->appends(array())->links(); ?>
+			<?php else: ?>
+				<?php echo $watchlist->appends(array())->links(); ?>
+			<?php endif; ?>
+				
+		</div>
+	<div class="push"></div>
+	</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ads'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('Main.Boilerplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

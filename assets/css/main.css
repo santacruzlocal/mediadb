@@ -1,0 +1,24 @@
+9@media screen and (max-width: 430px) {
+    .home-trailer-poster figcaption {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+}
+.home-trailer-poster:active .overlay i, .home-trailer-poster:active>figcaption>a, .home-trailer-poster:hover .overlay i, .home-trailer-poster:hover>figcaption>a {
+    color:#f39c12;
+    border-color:#f39c12
+}
+.home-trailer-link {
+    color:#c0392b
+}
+.home-trailer-link:active, .home-trailer-link:hover {
+    color:#e74c3c;
+    cursor:pointer
+}
+.trailers {
+    padding:0;
+    margin:0
+}
+img.trailer:hover {
+    border:1px solid
+}

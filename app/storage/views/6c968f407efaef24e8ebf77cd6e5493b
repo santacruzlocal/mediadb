@@ -1,0 +1,128 @@
+<div class="row">
+  <?php if (date('Y-m-d', strtotime($data->getReleaseDate())) < Carbon\Carbon::now()->toDateString() || strlen($data->getReleaseDate()) <= 4): ?>
+
+<section class="col-sm-6">
+  <div class="bordered-heading"><span class="text-border-top"><i class="fa fa-thumbs-o-down"></i> <?php echo trans('main.critic reviews'); ?></span>
+  
+    <?php if (Helpers::hasAccess('reviews.update')): ?>
+
+      <?php echo Form::open(array('url' => 'private/update-reviews', 'class' => 'pull-right')); ?>
+        <?php echo Form::hidden('id', $data->getId()); ?>
+      <button type = "submit" title="<?php echo trans('dash.delete'); ?>" class="btn btn-info btn-xs"><i class="fa fa-refresh"></i> <?php echo trans('main.update'); ?></button>
+      <?php echo Form::close(); ?>
+
+    <?php endif; ?>
+
+  </div>
+    <?php if ($data->getCriticReviews()): ?>
+
+      <?php foreach(array_slice($data->getCriticReviews(), 0, 10) as $k => $r): ?>
+
+         <?php if ($k == 4): ?>
+          <?php if($ad = $options->getTitleCriticAd()): ?>
+              <div class="row ads-row"><?php echo $ad; ?></div>
+              <hr>
+          <?php endif; ?>
+         <?php endif; ?>
+
+        <div class="row review-info">
+          <span class="review-score"><span><?php echo e($r['score']); ?></span></span> <?php echo trans('main.by'); ?> 
+
+          <?php if ($r['author']): ?>
+            <strong><?php echo e($r['author']); ?></strong> - 
+          <?php endif; ?>
+
+          <strong><?php echo e($r['source']); ?></strong>
+        </div>
+
+        <p class="review-body"><?php echo e($r['body']); ?></p>
+
+        <p class="row review-full">
+          <a target="_blank" href="<?php echo e($r['link']); ?>"><?php echo trans('main.full review'); ?> <i class="icon-share-alt"></i></a>
+          
+          <?php if(Helpers::hasAccess('reviews.delete')): ?>
+
+            <?php echo Form::open(array('url' => Request::url() . '/reviews/' . $r['id'], 'class' => 'trash-ico-critic', 'method' => 'delete')); ?>
+              <?php echo Form::hidden('id', $data->getId()); ?>
+              <button type = "submit" title="<?php echo trans('dash.delete'); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </button>
+            <?php echo Form::close(); ?>
+
+          <?php endif; ?>
+
+        </p>
+
+        <hr> 
+
+      <?php endforeach; ?>
+    <?php else: ?>
+      <strong><?php echo trans('main.no critic reviews'); ?></strong>
+    <?php endif; ?>
+</section>
+
+<section class="col-sm-6">
+
+  <div class="bordered-heading hidden-sm">
+    <span class="text-border-top"> <i class="fa fa-thumbs-o-up"></i> <?php echo trans('main.user reviews'); ?></span>
+
+    <?php /*display modal button if user review found*/ ?>
+    <?php if ( $data->getUserReviews()): ?>
+
+      <a href="#" type="button" data-toggle="modal" data-target="#review-modal" class="pull-right btn btn-info btn-xs"><i class="fa fa-pencil"></i> <?php echo trans('main.write one'); ?></a>
+
+      <?php echo $__env->make('Titles.Partials.FormModal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php endif; ?>
+    
+  </div>
+
+  <?php /*display form if no user reviews found*/ ?>
+  <?php if ( ! $data->getUserReviews() ): ?>
+
+   <div class="hidden-sm"> <?php echo $__env->make('Titles.Partials.ReviewForm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> </div> 
+
+  <?php /*if found review display them and pop up modal with form*/ ?>  
+  <?php else: ?>
+
+      <?php foreach(array_slice($data->getUserReviews(), 0, 10) as $k => $r): ?>
+
+         <?php if ($k == 4): ?>
+          <?php if($ad = $options->getTitleUserAd()): ?>
+              <div class="row ads-row"><?php echo $ad; ?></div>
+              <hr>
+          <?php endif; ?>
+         <?php endif; ?>
+
+        <div class="row review-info">
+          <span class="review-score"><?php echo e($r['score'] . '.0'); ?></span> <?php echo trans('main.by'); ?> <strong><a href="<?php echo e(Helpers::url($r['author'], $r['user_id'], 'users')); ?>"><?php echo e($r['author']); ?></a></strong> - <strong><?php echo \Carbon\Carbon::createFromTimeStamp(strtotime($r['created_at']))->diffForHumans(); ?></strong>
+
+          <?php /*delete review button*/ ?>
+          <?php if (Helpers::hasAccess('reviews.delete')): ?>
+
+            <?php echo Form::open(array('url' => Request::url() . '/reviews/' . $r['id'], 'class' => 'trash-ico-user', 'method' => 'delete')); ?>
+
+              <?php echo Form::hidden('id', $data->getId()); ?>
+
+              <button type = "submit" title="<?php echo trans('dash.delete'); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </button>
+
+            <?php echo Form::close(); ?>
+
+          <?php endif; ?>
+
+        </div> 
+
+        <p class="review-body"><?php echo e($r['body']); ?></p>
+      
+        <hr> 
+
+    <?php endforeach; ?>
+
+  <?php endif; ?>
+
+</section>
+
+<?php else: ?>
+
+<div><h3 class="reviews-not-released"><i class="fa fa-clock-o"></i> <?php echo trans('main.will be released') . ' ' . $data->getReleaseDate() . ' ...'; ?></h3></div>
+
+<?php endif; ?>
+</div>

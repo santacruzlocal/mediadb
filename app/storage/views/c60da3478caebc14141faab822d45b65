@@ -1,0 +1,51 @@
+
+<?php $__env->startSection('htmltag'); ?>
+  <html id="forgot-pass-page">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title'); ?>
+  <title>twitter - <?php echo trans('main.brand'); ?></title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('bodytag'); ?>
+  <html class="nav-no-border">
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+  <div class="container push-footer-wrapper">
+    <div class="col-sm-2"></div>
+
+    <div class="col-sm-8">
+
+      <?php echo $__env->make('Partials.Response', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+      <?php if (isset($failure)): ?>
+        <div class="alert alert-danger alert-dismissable"> <?php echo $failure; ?>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        </div>
+      <?php endif; ?>
+
+      <?php echo Form::open(array('url' => '/social/twitter/email')); ?>
+
+      <div class="form-group">
+        <label class="mar-bot" for="email"><i class="fa fa-user"></i></span> <?php echo trans( 'main.twitter mail expl' ); ?> </label>
+        <?php echo Form::text('email', Input::old('email'), array('class' => 'form-control')); ?>
+        
+        <?php echo $errors->first('email', "<span class='help-block alert alert-danger'>:message</span>"); ?>
+      </div>
+          
+      <hr>
+      <button type="submit" class="btn btn-warning pull-right"><?php echo trans('users.confirm'); ?></button>
+
+      <?php echo Form::close(); ?>
+
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="push"></div>
+  </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ads'); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('Main.Boilerplate', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

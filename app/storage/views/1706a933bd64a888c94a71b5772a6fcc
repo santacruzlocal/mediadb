@@ -1,0 +1,37 @@
+<div class="jumbotron" style="background-color: grey">
+	<section style="background-image: url(<?php echo $user->background ? asset($user->background) : asset('assets/images/ronin.jpg'); ?>)" id="img-bg">
+		<div id="img-contents">
+			<img width="100px" height="100px" class="img-thumbnail" src="<?php echo $user->avatar ? asset($user->avatar) : asset('assets/images/no_user_icon_big.jpg'); ?>" alt="">
+			<h1><?php echo $user->first_name && $user->last_name ? $user->first_name . ' ' . $user->last_name : $user->username; ?></h1>
+		</div>
+	</section>
+	<div id="under-image-cont">			
+		<div id="under-image-wrapper">
+			<div class="stats">
+				<span class="number"><?php echo $watCount; ?></span> <br> <span class="grey-out"><?php echo trans('main.titles watchlisted'); ?></span>
+			</div>
+			<div class="stats">
+				<span class="number"><?php echo $favCount; ?></span> <br> <span class="grey-out"><?php echo trans('main.titles favorited'); ?></span>
+			</div>
+			<div class="stats">
+				<span class="number"><?php echo $revCount; ?></span> <br> <span class="grey-out"><?php echo trans('main.reviews written'); ?></span>
+			</div>
+			<div class="stats">
+				<span class="number"><?php echo $user->created_at->toFormattedDateString(); ?></span> <br> <span class="grey-out"><?php echo trans('main.member since'); ?></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row"> <?php echo $__env->make('Partials.Response', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> </div>
+
+<div class="lists-wrapper mar-bot">
+	<ul class="nav nav-pills nav-justified">
+	  <li class="<?php echo ! Request::segment(3) ? 'active' : ''; ?>"><a href="<?php echo Helpers::url($user->username, $user->id, 'users'); ?>"><?php echo trans('users.watchlist'); ?></a></li>
+	  <li class="<?php echo Request::segment(3) == 'favorites' ? 'active' : ''; ?>"><a href="<?php echo Helpers::url($user->username, $user->id, 'users') . '/favorites'; ?>"><?php echo trans('users.favorites'); ?></a></li>
+	  <li class="<?php echo Request::segment(3) == 'reviews' ? 'active' : ''; ?>"><a href="<?php echo Helpers::url($user->username, $user->id, 'users') .'/reviews'; ?>"><?php echo trans('users.reviews'); ?></a></li>
+	  <?php if(Helpers::isUser($user->username)): ?>
+	  	<li class="<?php echo Request::segment(3) == 'settings' ? 'active' : ''; ?>"><a href="<?php echo Helpers::url($user->username, $user->id, 'users') . '/settings'; ?>"><?php echo trans('users.settings'); ?></a></li>
+	  <?php endif; ?>
+	</ul>
+</div>

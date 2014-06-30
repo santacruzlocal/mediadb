@@ -1,0 +1,74 @@
+
+    <!-- Begin Header -->
+    <div class="row header">
+        <!--  Logo  -->
+        <div class="span3 logo">
+         <a href="<?php echo route('home'); ?>"><img src="assets/images/logo/logo-tv.png" alt="The Media Database" /><img src="assets/images/logo/logo-words.png" height="" width="130" alt="The Media Database"/></a></div>
+        <!--  Start Menu  -->
+        <!--  Start Computer Navigation  -->
+        <div class="span9 navigation">
+            <div class="navbar hidden-phone" role="navigation">
+                <!--  All Users  -->
+                <ul class="nav">
+                    <li> <a href="<?php echo route('home'); ?>"><?php echo trans('main.home'); ?></a> </li>
+                    <li class="dropdown">
+                        <a href="<?php echo url(Str::slug(trans('main.series'))); ?>"><?php echo trans('main.series-menu'); ?> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">TV Series</a></li>
+                            <li><a href="#">TV Calendar</a></li>
+                            <li><a href="#">TV Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="<?php echo url(Str::slug(trans('main.movies'))); ?>"><?php echo trans('main.movies-menu'); ?></a> </li>
+                    <li> <a href="<?php echo url(Str::slug(trans('main.news'))); ?>"><?php echo trans('main.news-menu'); ?></a> </li>
+                    <li> <a href="<?php echo url(Str::slug(trans('main.people'))); ?>"><?php echo trans('main.people-menu'); ?></a> </li>
+
+                   <!-- Navbar User Not Loged In -->
+                   <?php if( ! Sentry::check()): ?>
+                    <li><a href="<?php echo url(Str::slug(trans('main.register'))); ?>"><?php echo trans('main.register-menu'); ?></a></li>
+                    <li><a href="<?php echo url(Str::slug(trans('main.login'))); ?>"><?php echo trans('main.login-menu'); ?></a></li>
+
+                   <?php else: ?>
+                   <!--Navbar Logged In Users-->
+                   <li><a href="<?php echo Helpers::profileUrl(); ?>"><?php echo e(Helpers::loggedInUser()->first_name ? Helpers::loggedInUser()->first_name : Helpers::loggedInUser()->username); ?>'s <?php echo trans('users.profile'); ?></a></li>
+
+                    <li><a href="<?php echo action('SessionController@logOut'); ?>"><i class="glyphicon-remove-circle"></i><?php echo trans('main.logout-menu'); ?></a></li>
+                    <?php endif; ?>
+
+                    <!--  Nav Logged In Admin / Super User  -->
+                    <?php if(Helpers::hasAccess('super')): ?>
+                    <li><a href="<?php echo url('dashboard'); ?>"><?php echo trans('main.dashboard'); ?></a></li>
+                    <?php endif; ?>
+
+                </ul>
+            </div>
+            <!--  End Computer Navigation  -->
+
+            <!--  Start Phone/Tablet Navigation  -->
+            <form action="#" id="mobile-nav" class="visible-phone">
+                <div class="mobile-nav-select">
+                    <select onChange="window.open(this.options[this.selectedIndex].value,'_top')">
+                        <option value="">Navigate...</option>
+                        <option value="<?php echo route('home'); ?>"><?php echo trans('main.home'); ?></option>
+                        <option value="<?php echo url(Str::slug(trans('main.series'))); ?>"><?php echo trans('main.series-menu'); ?></option>
+                        <option value="<?php echo url(Str::slug(trans('main.movies'))); ?>"><?php echo trans('main.movies-menu'); ?></option>
+                        <option value="<?php echo url(Str::slug(trans('main.news'))); ?>"><?php echo trans('main.news-menu'); ?></option>
+                        <option value="<?php echo url(Str::slug(trans('main.people'))); ?>"><?php echo trans('main.people-menu'); ?></option>
+                        <?php if(Helpers::hasAccess('super')): ?>
+                        <option value="<?php echo url('dashboard'); ?>"><?php echo trans('dash.dash'); ?></option>
+                        <option value="<?php echo url('dashboard'); ?>"><?php echo trans('main.dashboard'); ?></option>
+                        <?php endif; ?>
+                        <?php if( ! Sentry::check()): ?>
+                        <option value="<?php echo url(Str::slug(trans('main.register'))); ?>"><?php echo trans('main.register-menu'); ?></option>
+                        <option value="<?php echo url(Str::slug(trans('main.login'))); ?>"><?php echo trans('main.login-menu'); ?></option>
+                        <?php else: ?>
+                        <option value="<?php echo Helpers::profileUrl(); ?>"><?php echo e(Helpers::loggedInUser()->first_name ? Helpers::loggedInUser()->first_name : Helpers::loggedInUser()->username); ?>'s <?php echo trans('users.profile'); ?></option>
+                        <option value="<?php echo action('SessionController@logOut'); ?>"><?php echo trans('main.logout-menu'); ?></option>
+                        <?php endif; ?>
+                    </select>
+                </div>
+            </form>
+            <!--  End Phone/Tablet Navigation  -->
+        </div>
+        <!--  End Menu  -->
+    </div><!--End Header-->

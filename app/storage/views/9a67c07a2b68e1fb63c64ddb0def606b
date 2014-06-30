@@ -1,0 +1,78 @@
+<nav style="border-color:<?php echo $color; ?>" class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar-header">
+
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+    	</button>
+
+    	<?php if (isset($options->options['logo']) && Str::length($options->options['logo']) > 4): ?>
+    		<a style="padding:0px 0px 0px 15px" class="navbar-brand" href="<?php echo route('home'); ?>">
+    			<img class="brand-logo" src="<?php echo asset('assets/images/' . $options->options['logo']); ?>">
+    		</a>	
+    	<?php else: ?>
+			<a style="color:<?php echo $color; ?>!important" class="navbar-brand" href="<?php echo route('home'); ?>"><?php echo trans('main.brand'); ?></a>
+    	<?php endif; ?>
+    	
+      </div>
+
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+
+		<ul class="nav navbar-nav">
+			<li><a href="<?php echo route('home'); ?>"><?php echo trans('main.home'); ?></a></li>
+			<li><a href="<?php echo url(Str::slug(trans('main.movies'))); ?>"><?php echo trans('main.movies-menu'); ?></a></li>
+			<li><a href="<?php echo url(Str::slug(trans('main.series'))); ?>"><?php echo trans('main.series-menu'); ?></a></li>
+			<li><a href="<?php echo url(Str::slug(trans('main.news'))); ?>"><?php echo trans('main.news-menu'); ?></a></li>
+			<li><a href="<?php echo url(Str::slug(trans('main.people'))); ?>"><?php echo trans('main.people-menu'); ?></a></li>
+
+			<?php if(Helpers::hasAccess('super')): ?>
+				<?php if (isset($options->options['logo']) && Str::length($options->options['logo']) > 4): ?>
+	        		<li><a href="<?php echo url('dashboard'); ?>"><?php echo trans('dash.dash'); ?></a></li>
+	        	<?php else: ?>
+	        		<li><a href="<?php echo url('dashboard'); ?>"><?php echo trans('main.dashboard'); ?></a></li>
+	        	<?php endif; ?>
+			<?php endif; ?>
+	    </ul>
+
+	    <?php if( ! Sentry::check()): ?>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="<?php echo url(Str::slug(trans('main.register'))); ?>"><?php echo trans('main.register-menu'); ?></a></li>
+				<li><a href="<?php echo url(Str::slug(trans('main.login'))); ?> "><?php echo trans('main.login-menu'); ?></a></li>
+			</ul>
+
+	    <?php else: ?>
+
+			<ul class="nav navbar-nav navbar-right logged-in-box hidden-xs">
+				<li>
+					<a class="no-pad" href="<?php echo Helpers::profileUrl(); ?>"><img class="small-avatar" src="<?php echo Helpers::smallAvatar(); ?>" alt="" class="img-responsive"></a>
+				</li>
+				<li><a class="logged-box-text" href="<?php echo Helpers::profileUrl(); ?>"><?php echo trans('main.welcome'); ?>, <br> <?php echo e(Helpers::loggedInUser()->first_name ? Helpers::loggedInUser()->first_name : Helpers::loggedInUser()->username); ?></a></li>
+				<li><a class="logout hidden-md" href="<?php echo action('SessionController@logOut'); ?>"><i class="fa fa-power-off"></i> </a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right visible-xs logged-in-box">
+				<li><a href="<?php echo Helpers::profileUrl(); ?>"><?php echo trans('users.profile'); ?></a></li>
+			</ul>
+
+	    <?php endif; ?>
+
+		<?php if ( !( ! Request::segments(2))): ?>
+
+			<?php echo Form::open(array('url' => Str::slug(trans('main.search')), 'class' => 'navbar-form navbar-right nav-search hidden-sm col-sm-3 col-lg-4 col-xs-12', 'method' => 'get')); ?>
+
+				<div class="input-group">
+					<?php echo Form::text('q', null, array('id' => 'auto-complete-small', 'class' => 'form-control search-bar', 'placeholder' => trans('main.nav search place'), 'data-url' => url('typeahead'))); ?>
+					<span class="input-group-btn">
+						<button class="btn btn-default search-button" type="submit"><i class="fa fa-search"></i></span></button>
+					</span>
+				</div>
+			
+			<?php echo Form::close(); ?>
+
+		<?php endif; ?>
+
+    </div>
+</nav>

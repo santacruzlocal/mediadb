@@ -1,0 +1,6 @@
+<!-- Start Twitter-->
+<h5 class="title-bg">Tweets</h5>
+<?php /*<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/TheMediaDb/lists/tmdb-everything-in-media"data-widget-id="481715344206098432" data-chrome="noborders noscrollbar transparent" data-link-color="#d8450b" data-tweet-limit="3" data-aria-polite="assertive">
+Tweets from https://twitter.com/TheMediaDb/lists/tmdb-everything-in-media</a>*/ ?>
+<!--End Twitter-->
+<div class="twitter-timeline" width="365" height="500" data-dnt="true" data-widget-id="481716691290693633" data-chrome="nofooter transparent noborders noscrollbar noheader" data-link-color="#d8450b"></div>
